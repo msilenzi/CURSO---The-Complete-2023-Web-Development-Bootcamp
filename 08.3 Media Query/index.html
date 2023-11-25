@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- 
+    TODO: Change the background color for each device
+    [lightsalmon] Mobile Devices: 319px — 480px
+    [powderblue] iPads and Tablets: 481px — 1200px
+    [limegreen] Laptops: 1201px — 1600px
+    [seagreen] Desktops: 1601px and more
+  -->
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1"
+    />
+    <title>Media Query</title>
+    <style>
+      body {
+        background-color: aquamarine;
+      }
+
+      @media (min-width: 320px) {
+        body {
+          background-color: lightsalmon;
+        }
+      }
+
+      @media (min-width: 480px) {
+        body {
+          background-color: powderblue;
+        }
+      }
+
+      @media (min-width: 1200px) {
+        body {
+          background-color: limegreen;
+        }
+      }
+
+      @media (min-width: 1600px) {
+        body {
+          background-color: seagreen;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <code><b>Current device:</b> <span id="current-device"></span></code>
+    <br />
+    <code><b>Current width:</b> <span id="current-width"></span> px</code>
+    <br />
+    <code><b>Current color:</b> <span id="current-color"></span></code>
+  </body>
+
+  <script>
+    const $currentDevice = document.querySelector('#current-device')
+    const $currentWidth = document.querySelector('#current-width')
+    const $currentColor = document.querySelector('#current-color')
+
+    function updateCurrentDevice() {
+      let device = ''
+
+      if (window.innerWidth < 320) device = 'tiny'
+      else if (window.innerWidth <  480) device = 'mobile'
+      else if (window.innerWidth < 1200) device = 'tablet'
+      else if (window.innerWidth < 1600) device = 'laptop'
+      else device = 'desktop'
+
+      $currentDevice.innerText = device
+    }
+
+    function updateCurrentWidht() {
+      $currentWidth.innerText = window.innerWidth
+    }
+
+    function updateCurrentColor() {
+      const colors = {
+        'rgb(127, 255, 212)': 'aquamarine',
+        'rgb(255, 160, 122)': 'lightsalmon',
+        'rgb(176, 224, 230)': 'powderblue',
+        'rgb(50, 205, 50)': 'limegreen',
+        'rgb(46, 139, 87)': 'seagreen'
+      }
+
+      const bgColor = window.getComputedStyle(document.body)
+                            .getPropertyValue('background-color')
+
+      $currentColor.innerText = colors[bgColor]
+    }
+
+    function resizeHandler() {
+      updateCurrentDevice()
+      updateCurrentWidht()
+      updateCurrentColor()
+    }
+
+    resizeHandler()
+
+    window.addEventListener('resize', resizeHandler) 
+  </script>
+</html>
