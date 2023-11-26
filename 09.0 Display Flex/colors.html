@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Colors</title>
+
+    <style>
+      html {
+        padding: 1rem;
+      }
+
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+      }
+
+      .options {
+        margin-bottom: 2rem;
+      }
+
+      .input-group {
+        margin-bottom: 0.5rem;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        align-items: start;
+        flex-wrap: nowrap;
+        gap: 0em;
+
+        border: solid 1px;
+        padding: 2rem;
+      }
+
+      .container p {
+        text-transform: capitalize;
+        margin: 0;
+        font-size: 1.4em;
+        padding: 0.5em;
+        font-weight: 700;
+        color: #fff;
+        text-shadow: 0 0 2px black;
+      }
+
+      .container .red {
+        background-color: red;
+        padding: 1.5em 0.5em;
+      }
+
+      .container .orange {
+        background-color: orange;
+        font-size: 2.5em;
+      }
+
+      .container .yellow {
+        background-color: yellow;
+        padding: 1em 0.5em;
+      }
+
+      .container .green {
+        background-color: green;
+        padding: 2em 0.5em;
+      }
+
+      .container .blue {
+        background-color: blue;
+        font-size: 2.5em;
+      }
+
+      .container .indigo {
+        background-color: indigo;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="options">
+      <div class="options-form">
+        <div class="input-group">
+          <label for="select-display">
+            <code><b>display: </b></code>
+          </label>
+          <select
+            name="select-display"
+            id="select-display"
+            data-style="display"
+          >
+            <option value="flex">flex</option>
+            <option value="inline-flex">inline-flex</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label for="select-direction">
+            <code><b>flex-direction: </b></code>
+          </label>
+          <select
+            name="select-direction"
+            id="select-direction"
+            data-style="flexDirection"
+          >
+            <option value="row">row</option>
+            <option value="column">column</option>
+            <option value="row-reverse">row-reverse</option>
+            <option value="column-reverse">column-reverse</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label for="select-justify">
+            <code><b>justify-content: </b></code>
+          </label>
+          <select
+            name="select-justify"
+            id="select-justify"
+            data-style="justifyContent"
+          >
+            <option value="start">start</option>
+            <option value="center">center</option>
+            <option value="end">end</option>
+            <option value="space-around">space-around</option>
+            <option value="space-between">space-between</option>
+            <option value="space-evenly">space-evenly</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label for="select-align">
+            <code><b>align-items: </b></code>
+          </label>
+          <select name="select-align" id="select-align" data-style="alignItems">
+            <option value="start">start</option>
+            <option value="center">center</option>
+            <option value="end">end</option>
+            <option value="baseline">baseline</option>
+            <option value="stretch">stretch</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label for="select-wrap">
+            <code><b>flex-wrap: </b></code>
+          </label>
+          <select name="select-wrap" id="select-wrap" data-style="flexWrap">
+            <option value="nowrap">nowrap</option>
+            <option value="wrap">wrap</option>
+            <option value="wrap-reverse">wrap-reverse</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label for="input-gap">
+            <code><b>gap: </b></code>
+          </label>
+          <input
+            type="range"
+            name="input-gap"
+            id="input-gap"
+            min="0"
+            max="3"
+            step="0.1"
+            value="0"
+            data-style="gap"
+          />
+          <output>0em</output>
+        </div>
+      </div>
+    </section>
+
+    <main class="container" id="flex-container">
+      <p class="red">red</p>
+      <p class="orange">orange</p>
+      <p class="yellow">yellow</p>
+      <p class="green">green</p>
+      <p class="blue">blue</p>
+      <p class="indigo">indigo</p>
+    </main>
+
+    <script>
+      "strict mode";
+
+      const $flexContainer = document.querySelector("#flex-container");
+
+      document.querySelectorAll("select").forEach((select) => {
+        select.addEventListener("input", (e) => {
+          $flexContainer.style[e.target.dataset.style] = e.target.value;
+        });
+      });
+
+      document.querySelectorAll('input[type="range"]').forEach((range) => {
+        range.addEventListener("input", (e) => {
+          $flexContainer.style[e.target.dataset.style] = e.target.value + 'em'
+          e.target.nextElementSibling.value = e.target.value + 'em'
+        });
+      });
+
+      // document.querySelectorAll(".input-group").forEach((option) => {
+      //   option.querySelector("select").addEventListener("input", (e) => {
+      //     document.querySelector(".container").style[e.target.dataset.style] =
+      //       e.target.value;
+      //   });
+      // });
+    </script>
+  </body>
+</html>
