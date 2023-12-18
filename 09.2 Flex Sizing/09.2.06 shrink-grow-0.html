@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex Sizing | Width</title>
+
+    <style>
+      body {
+        margin: 0;
+      }
+
+      nav {
+        display: flex;
+        gap: 0.5em;
+        border: solid 2px;
+      }
+
+      nav > p {
+        margin: 0;
+        background-color: lightgray;
+        padding: 0.5em;
+
+        flex-basis: 8em;
+        flex-grow: 0;
+        flex-shrink: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <p>Home page</p>
+      <p>About</p>
+      <p>Contact us</p>
+      <p>The best programming school in the world</p>
+    </nav>
+  </body>
+</html>
