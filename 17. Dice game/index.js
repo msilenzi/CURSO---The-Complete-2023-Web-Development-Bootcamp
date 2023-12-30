@@ -15,4 +15,12 @@ function updateWinner() {
   }
 }
 
+function throwDices() {
+  dice1.throw()
+  dice2.throw()
+  updateWinner()
+}
+
 updateWinner()
+
+document.querySelector('.btn').addEventListener('click', throwDices)

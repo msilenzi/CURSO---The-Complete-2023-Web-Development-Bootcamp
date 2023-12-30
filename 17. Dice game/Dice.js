@@ -4,10 +4,10 @@ export default class Dice {
 
   constructor(element) {
     this.#element = element;
-    this.setRandomValue();
+    this.throw();
   }
 
-  setRandomValue() {
+  throw() {
     this.setValue(Math.floor(Math.random() * 6) + 1);
   }
 

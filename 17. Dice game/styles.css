@@ -1,3 +1,9 @@
+:root {
+  --main-color: #4ecca3;
+  --dark-color: #232931;
+  --bg-color: #393e46;
+}
+
 .container {
   width: 70%;
   margin: auto;
@@ -16,14 +22,14 @@ body {
 h1 {
   margin: 30px;
   font-family: 'Lobster', cursive;
-  text-shadow: 5px 0 #232931;
-  font-size: 8rem;
-  color: #4ecca3;
+  text-shadow: 5px 0 var(--dark-color);
+  font-size: clamp(3rem, 8vw, 8rem);
+  color: var(--main-color);
 }
 
 p {
   font-size: 2rem;
-  color: #4ecca3;
+  color: var(--main-color);
   font-family: 'Indie Flower', cursive;
 }
 
@@ -36,4 +42,27 @@ footer {
   color: #eeeeee;
   text-align: center;
   font-family: 'Indie Flower', cursive;
+}
+
+.btn {
+  border: none;
+  outline: 0;
+  cursor: pointer;
+  font-size: 2rem;
+  padding: 1rem 2rem;
+  margin-top: 2.8rem;
+  
+  color: var(--dark-color);
+  background-color: var(--main-color);
+  box-shadow: 0.25rem 0 var(--dark-color);
+  transition: .1s ease-in-out;
+}
+
+.btn:hover {
+  box-shadow: 0.5rem 0 var(--dark-color);
+}
+
+.btn:active {
+  box-shadow: 0.1rem 0 var(--dark-color);
+  transform: scale(0.98);
 }
